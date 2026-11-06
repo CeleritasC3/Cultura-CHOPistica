@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CHOPística</title>
+<style>
+:root{--bg:#0D1017;--p1:#161b25;--p2:#1e2531;--ln:#b8933f;--gold:#f2c35b;--ink:#f7ecd2;--mut:#94A3B8;--hot:#e8735a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:100%}html.tv{font-size:135%}
+body{margin:0;color:var(--ink);font-family:'Trebuchet MS',system-ui,sans-serif;min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+background:radial-gradient(ellipse at top,rgba(245,158,11,.12),transparent 70%),#0D1017;background-attachment:fixed}
+header{display:flex;align-items:center;gap:8px;padding:10px 14px;position:sticky;top:0;background:rgba(13,16,23,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:5;border-bottom:1px solid rgba(255,255,255,.07)}
+header h1{flex:1;margin:0;font-size:1.2rem;font-weight:600;color:#F59E0B}
+button{font:inherit;color:var(--ink);background:var(--p1);border:1.5px solid var(--ln);border-radius:14px;padding:12px 16px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold)}
+button.pri{background:linear-gradient(#f7d27a,#d9a640);border-color:#f7d27a;color:#2a1c04;font-weight:700;box-shadow:0 0 22px #f2c35b55}
+button.sm{padding:7px 13px;border-radius:11px}
+button.on{background:#f2c35b22;border-color:var(--gold);color:var(--gold)}
+main{padding:8px 14px 40px;max-width:780px;margin:0 auto;position:relative}
+input[type=text],input[type=number]{font:inherit;color:var(--ink);background:var(--p1);border:1.5px solid #b8933f88;border-radius:12px;padding:11px;width:100%}
+.row{display:flex;gap:8px;margin:8px 0}.wrap{flex-wrap:wrap}
+.chip{display:inline-flex;gap:6px;align-items:center;background:var(--p2);border:1px solid #b8933f66;border-radius:20px;padding:6px 8px 6px 14px;margin:3px}
+.chip b{cursor:pointer;color:var(--hot);padding:0 6px}
+h2{font-size:1.02rem;margin:20px 0 4px;color:var(--gold)}
+.hero{text-align:center;padding-top:2px;color:#94A3B8}.logo{width:min(94vw,440px);height:auto;filter:url(#stkL) drop-shadow(0 10px 25px rgba(225,29,72,.3));margin:-4px auto 0;display:block}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.menu button{padding:14px 8px;font-weight:600;color:#F8FAFC;min-height:132px;line-height:1.25;background:rgba(255,255,255,.03);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.07);border-radius:18px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.menu button:hover,.menu button:focus-visible{border-color:rgba(245,158,11,.5);box-shadow:0 4px 20px rgba(245,158,11,.15);outline:none}
+.menu button:active{transform:scale(.98)}
+.ic{width:64px;height:64px;display:block;margin:0 auto 6px;filter:url(#stk)}.ic.hd{width:36px;height:36px;margin:0}
+.menu small{display:block;font-weight:400;color:#94A3B8;font-size:.8rem;margin-top:4px}
+.big{font-size:1.9rem;font-weight:800;text-align:center;line-height:1.25;margin:22px 0}
+.mut{color:var(--mut)}.ctr{text-align:center}
+.card{background:linear-gradient(160deg,var(--p2),var(--p1));border:1px solid #b8933f66;border-radius:18px;padding:16px;margin:12px 0}
+.wheels{position:relative;width:min(92vw,62vh,560px);aspect-ratio:1;margin:20px auto 10px;border-radius:50%;box-shadow:0 0 70px #f2c35b1c}
+.wheels canvas{position:absolute}
+#w1{inset:0;width:100%;height:100%}#w2{left:17.5%;top:17.5%;width:65%;height:65%}
+.coin{position:absolute;left:39%;top:39%;width:22%;height:22%;border-radius:50%;box-shadow:0 0 22px #f2c35b88;z-index:2}.coin svg{width:100%;height:100%;display:block}
+.p1,.p2{position:absolute;left:50%;transform:translateX(-50%);border:12px solid transparent;border-top:22px solid var(--gold);z-index:3;filter:drop-shadow(0 0 6px var(--gold));width:0;height:0}
+.p1{top:-14px}.p2{top:calc(17.5% - 16px)}
+.pyw{overflow-x:auto;padding:6px 0}
+.pyr{display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:max-content;margin:0 auto;padding:0 44px}
+.pr{display:flex;justify-content:center;gap:5px;position:relative}
+.pr i{position:absolute;left:-40px;top:50%;transform:translateY(-50%);font-style:normal;color:var(--gold);font-size:.8rem;width:36px;text-align:right}
+.pc{width:var(--cw);height:calc(var(--cw)*1.4);border-radius:8px;border:1.5px solid var(--ln);background:repeating-linear-gradient(45deg,#17382a 0 6px,#10291d 6px 12px);padding:0;font-weight:800;font-size:calc(var(--cw)*.36);line-height:1}
+.pc.up{background:#fbf3de;color:#1d1d1d}.pc.red{color:#c4234b}
+.hand{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:none}
+.ov{position:fixed;inset:0;background:#000a;display:flex;align-items:center;justify-content:center;padding:18px;z-index:20}
+.ov>div{background:var(--bg);border:2px solid var(--gold);border-radius:20px;padding:20px;max-width:520px;width:100%;max-height:85vh;overflow:auto;line-height:1.5;box-shadow:0 0 50px #f2c35b33}
+.bar{height:8px;background:var(--gold);border-radius:4px;transition:width 5s linear}
+.st{height:140px;width:auto;display:block;margin:0 auto 6px;filter:url(#stk)}
+#v2{position:fixed;right:8px;bottom:4px;font-size:.62rem;opacity:.22;pointer-events:none}
+.stp{display:flex;align-items:center;gap:14px;justify-content:center}.stp b{font-size:1.6rem;min-width:36px;text-align:center}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="stk" x="-15%" y="-15%" width="130%" height="130%"><feMorphology in="SourceAlpha" operator="dilate" radius="2.5" result="d"/><feFlood flood-color="#f7ecd2"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="stkL" x="-8%" y="-8%" width="116%" height="116%"><feMorphology in="SourceAlpha" operator="dilate" radius="5" result="d"/><feFlood flood-color="#f7ecd2"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9"/></filter><g id="paw" fill="#1b1209"><ellipse cx="50" cy="64" rx="19" ry="15"/><ellipse cx="25" cy="42" rx="7.5" ry="10" transform="rotate(-20 25 42)"/><ellipse cx="41" cy="30" rx="7.5" ry="10.5" transform="rotate(-6 41 30)"/><ellipse cx="59" cy="30" rx="7.5" ry="10.5" transform="rotate(6 59 30)"/><ellipse cx="75" cy="42" rx="7.5" ry="10" transform="rotate(20 75 42)"/></g><g id="chop" stroke="#1b1209" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<path d="M52 58 C18 58 10 120 32 152 C46 164 66 142 70 108 Z" fill="#a65f27"/>
+<path d="M148 58 C182 58 190 120 168 152 C154 164 134 142 130 108 Z" fill="#a65f27"/>
+<path d="M100 44 C148 44 162 84 158 116 C154 152 128 168 100 168 C72 168 46 152 42 116 C38 84 52 44 100 44 Z" fill="#c47a3a"/>
+<path d="M92 50 Q100 44 108 50 L113 104 Q100 114 87 104 Z" fill="#f3dfb9" stroke="none"/>
+<ellipse cx="100" cy="134" rx="31" ry="25" fill="#f3dfb9"/>
+<ellipse cx="76" cy="84" rx="9" ry="5.5" fill="#e3a869" stroke="none"/><ellipse cx="124" cy="84" rx="9" ry="5.5" fill="#e3a869" stroke="none"/>
+<circle cx="77" cy="102" r="5.5" fill="#1b1209" stroke="none"/><circle cx="123" cy="102" r="5.5" fill="#1b1209" stroke="none"/>
+<circle cx="79" cy="100" r="1.8" fill="#fff" stroke="none"/><circle cx="125" cy="100" r="1.8" fill="#fff" stroke="none"/>
+<path d="M92 146 Q100 168 108 146 Z" fill="#ef7f8e" stroke-width="3"/>
+<path d="M100 130 L100 140 M100 140 Q88 150 80 142 M100 140 Q112 150 120 142" fill="none" stroke-width="3.5"/>
+<ellipse cx="100" cy="124" rx="12" ry="8.5" fill="#1b1209"/><ellipse cx="96" cy="121" rx="3.5" ry="2" fill="#fff" stroke="none" opacity=".6"/>
+</g><g id="chopwater"><use href="#chop" transform="translate(0 6) scale(.9)"/>
+<g stroke="#1b1209" stroke-width="4" stroke-linejoin="round"><path d="M136 96 L190 96 L182 176 Q181 184 173 184 L153 184 Q145 184 144 176 Z" fill="#eaf6fb"/><path d="M139 122 L187 122 L182 176 Q181 184 173 184 L153 184 Q145 184 144 176 Z" fill="#6fcdf0"/></g>
+<path d="M164 60 C156 74 150 80 150 86 A14 14 0 0 0 178 86 C178 80 172 74 164 60Z" fill="#6fcdf0" stroke="#1b1209" stroke-width="4" stroke-linejoin="round"/></g><g id="logo"><path d="M610 189 L537 208 L601 235 L530 239 L566 272 L480 264 L503 312 L426 286 L415 336 L355 301 L312 330 L280 299 L237 325 L213 296 L147 311 L157 268 L87 272 L123 242 L36 233 L88 209 L26 190 L85 170 L31 147 L103 136 L85 104 L168 112 L138 69 L210 90 L218 50 L287 77 L327 46 L360 77 L414 52 L436 84 L499 69 L484 106 L576 101 L523 142 L609 143 L547 169Z" fill="#e8503a" stroke="#e8503a" stroke-width="10" stroke-linejoin="round"/>
+<path d="M100 120 L200 100 M470 250 L540 270" stroke="#c93a28" stroke-width="5" stroke-linecap="round" fill="none" opacity=".5"/>
+<use href="#chop" transform="translate(392 -92) scale(.78)"/>
+<g filter="url(#rough)" fill="none" stroke="#120c06" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+<g transform="translate(80 44) skewX(-9)"><path transform="translate(0 0)" d="M92 22 C60 -4 6 12 4 66 C2 118 56 142 96 106"/><path transform="translate(118 0)" d="M12 4 L6 126 M90 0 L84 124 M10 64 C34 52 62 72 88 60"/><path transform="translate(236 0)" d="M50 2 C12 -2 -4 52 8 100 C20 140 76 134 90 96 C104 54 90 6 50 2 Z"/><path transform="translate(352 0)" d="M12 132 L16 4 C62 -8 102 10 92 46 C86 78 50 86 14 74"/></g><g transform="translate(150 214) skewX(-9)"><path transform="translate(0 0)" d="M10 24 L8 78 M22 6 L36 -10"/><path transform="translate(24 0)" d="M62 30 C40 6 6 26 28 44 C50 56 68 64 52 76 C36 88 8 76 6 66"/><path transform="translate(96 0)" d="M32 -6 L28 68 C28 80 40 82 52 76 M6 26 L54 22"/><path transform="translate(142 0)" d="M10 24 L8 78 M12 4 L13 5"/><path transform="translate(178 0)" d="M56 28 C30 8 4 30 8 54 C12 80 40 84 58 70"/><path transform="translate(248 0)" d="M52 36 C30 20 4 38 8 60 C12 84 46 84 54 60 M56 22 L52 80 C52 84 58 84 68 80"/></g></g>
+<g stroke="#1b1209" stroke-width="4"><ellipse cx="452" cy="50" rx="20" ry="13" fill="#c47a3a"/><ellipse cx="520" cy="46" rx="20" ry="13" fill="#c47a3a"/></g></g><g id="i-ruleta" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle cx="50" cy="56" r="40" fill="#f2c35b"/><path d="M50 16V96M10 56H90M22 28L78 84M78 28L22 84" fill="none"/><circle cx="50" cy="56" r="23" fill="#2f7a55"/><path d="M50 33V79M27 56H73M34 40L66 72M66 40L34 72" fill="none" stroke="#f7ecd2" stroke-width="3"/><circle cx="50" cy="56" r="8" fill="#e8503a"/><path d="M38 4H62L50 24Z" fill="#e8503a"/></g>
+<g id="i-piramide" stroke="#120c06" stroke-width="4" stroke-linejoin="round"><g fill="#f2c35b"><rect x="14" y="66" width="24" height="28" rx="4"/><rect x="38" y="66" width="24" height="28" rx="4"/><rect x="62" y="66" width="24" height="28" rx="4"/><rect x="26" y="38" width="24" height="28" rx="4"/><rect x="50" y="38" width="24" height="28" rx="4"/></g><rect x="38" y="8" width="24" height="30" rx="4" fill="#f7ecd2"/><path d="M50 30C42 24 42 17 46 15C48 14 50 16 50 17C50 16 52 14 54 15C58 17 58 24 50 30Z" fill="#e8503a" stroke-width="2.5"/></g>
+<g id="i-nunca" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M28 66L20 92L52 68Z" fill="#f7ecd2"/><rect x="8" y="8" width="84" height="62" rx="18" fill="#f7ecd2"/><path d="M36 34C36 18 64 18 64 34C64 46 50 44 50 56" fill="none" stroke="#e8503a" stroke-width="8"/><circle cx="50" cy="63" r="2" fill="#e8503a" stroke="#e8503a" stroke-width="5"/></g>
+<g id="i-chupi" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M64 58H74A11 11 0 0 1 74 82H64" fill="none" stroke-width="6"/><rect x="22" y="44" width="44" height="46" rx="7" fill="#f2c35b"/><path d="M34 56V80M46 56V80M58 56V80" stroke="#c9962f" stroke-width="3"/><g fill="#f7ecd2"><circle cx="30" cy="44" r="9"/><circle cx="44" cy="40" r="10"/><circle cx="58" cy="44" r="9"/></g><path d="M34 28V40C42 46 56 46 64 40V28Z" fill="#123524"/><path d="M8 24L50 8L92 24L50 40Z" fill="#123524"/><path d="M82 28L86 48" /><circle cx="86" cy="52" r="4" fill="#f2c35b"/></g>
+<g id="i-trivia" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M24 34C12 34 6 62 10 76C13 88 25 88 31 77L37 66H63L69 77C75 88 87 88 90 76C94 62 88 34 76 34Z" fill="#e8503a"/><path d="M26 50V62M20 56H32" stroke="#f7ecd2" stroke-width="6"/><circle cx="72" cy="48" r="5" fill="#f2c35b"/><circle cx="82" cy="58" r="5" fill="#f2c35b"/><path d="M40 52H60" stroke="#f7ecd2" stroke-width="5"/><path d="M50 14V4M38 20L30 12M62 20L70 12" stroke="#f2c35b" stroke-width="5"/></g>
+<g id="i-coin"><circle cx="50" cy="50" r="48" fill="#f2c35b" stroke="#b8933f" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#b8933f" stroke-width="2.5"/><use href="#paw" transform="translate(21 20) scale(.58)"/></g></defs></svg>
+<div id="app"></div><div id="ov"></div><div id="v2">v2</div>
+<script>
+const ic=(k,c='ic')=>`<svg class="${c}" viewBox="0 0 100 100"><use href="#i-${k}"/></svg>`;
+const CHW='<svg class="st" viewBox="0 0 200 200"><use href="#chopwater"/></svg>';
+const $=s=>document.querySelector(s);
+let S={players:[],drinks:[],water:6,mode:'real',lie:false,timer:true,rows:5,tally:{}};
+try{Object.assign(S,JSON.parse(localStorage.getItem('chopistica')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('chopistica',JSON.stringify(S))}catch(e){}};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pick=a=>a[Math.random()*a.length|0];
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+let view='menu',cur='',stop=()=>{},pend=[],pt=0;
+const STK={ruleta:'ruleta',piramide:'piramide',nunca:'nunca',chupi:'chupi'};
+
+const HELP={
+ruleta:'<b>Ruleta doble.</b> Gira las dos ruedas a la vez. El anillo de adentro dice <b>quién</b> y el de afuera dice <b>qué pasa</b>: una bebida (con 1 a 3 tragos al azar) o una acción como «Fondo», «Pasa», «Reparte 2» o «Toman todos». Los tragos se anotan solos en el marcador.',
+piramide:'<b>Pirámide.</b> Elige cuántas filas (de 3 a 10). Cada jugador tiene 3 cartas. Se voltean las cartas de abajo hacia arriba. Quien tenga una carta del mismo número reparte tantos tragos como indica la fila (abajo 1, y sube de a uno). Si nadie la tiene, no pasa nada.<br><br><b>Con mentiras (opcional).</b> Nadie sabe quién tiene qué: quien diga «la tengo» reparte los tragos. Cualquiera puede gritar «¡mentiroso!». Si mentía, toma el doble. Si decía la verdad, toma el doble quien lo acusó. Con «Revelar» se ve quién la tiene de verdad.<br><br><b>Cartas.</b> Con baraja real, cada uno reparte y mira las suyas y la app solo voltea la pirámide. Si la app reparte, cada uno mantiene presionado su nombre para ver su mano (cuidado con la tele espejada).',
+nunca:'<b>Yo nunca nunca.</b> Se lee la frase. Quien sí lo hizo, toma un trago. Toca el nombre de quien tomó para sumarle el trago. Puedes elegir las categorías que quieras.',
+chupi:'<b>Cultura chupística.</b> Elige las categorías que quieras. Sale una y, por turnos, cada jugador dice algo que pertenezca a ella sin repetir lo ya dicho. Si se queda en blanco o repite, toma y sale otra. Con «Mezclada», salen dos categorías juntas y vale cualquier cosa de cualquiera de las dos.'};
+
+function shell(t,body,h){const k=STK[cur];$('#app').innerHTML=`<header>${view!=='menu'&&view!=='setup'?'<button class="sm" onclick="go(\'menu\')">‹ Menú</button>':''}<h1>${t}</h1>${k&&view!=='menu'&&view!=='setup'?ic(k,'ic hd'):''}${h?'<button class="sm" onclick="help()">?</button>':''}<button class="sm" onclick="score()">🍺</button></header><main>${body}</main>`}
+function go(v){stop();stop=()=>{};view=v;({setup,menu,ruleta,piramide,nunca,chupi})[v]()}
+function modal(h){$('#ov').innerHTML=`<div class="ov" onclick="if(event.target===this)closeOv()"><div>${h}<p class="ctr"><button class="pri" onclick="closeOv()">Listo</button></p></div></div>`}
+function closeOv(){$('#ov').innerHTML=''}
+function help(){modal(HELP[cur])}
+function score(){const e=Object.entries(S.tally).sort((a,b)=>b[1]-a[1]);modal('<h2 style="margin-top:0">Marcador de tragos</h2>'+(e.length?e.map(([n,v])=>`<div class="row"><span style="flex:1">${esc(n)}</span><b>${v}</b></div>`).join(''):'<p class="mut">Todavía nadie ha tomado.</p>')+`<button class="sm" onclick="S.tally={};save();score()">Reiniciar marcador</button>`)}
+function drink(p,n=1){const b=S.tally[p]||0;S.tally[p]=b+n;save();if(S.water>0&&Math.floor((b+n)/S.water)>Math.floor(b/S.water)&&!pend.includes(p))pend.push(p);clearTimeout(pt);pt=setTimeout(()=>{if(pend.length){modal(CHW+`<div class="big" style="margin:8px 0">💧 Pausa de agua<br><span style="color:var(--gold)">${pend.map(esc).join(', ')}</span></div><p class="ctr mut">Un vaso de agua antes del próximo trago.</p>`);pend=[]}},900)}
+function tv(){const d=document.documentElement;d.classList.toggle('tv');try{d.classList.contains('tv')?d.requestFullscreen():document.exitFullscreen()}catch(e){}}
+async function wake(){try{await navigator.wakeLock.request('screen')}catch(e){}}
+document.addEventListener('click',wake,{once:true});
+
+/* ---------- configuración ---------- */
+function setup(){cur='setup';
+const chips=(a,k)=>a.map((x,i)=>`<span class="chip">${esc(x)}<b onclick="S.${k}.splice(${i},1);save();setup()">×</b></span>`).join('');
+shell('Jugadores y bebidas',`<h2>¿Quiénes juegan?</h2><div class="row"><input type="text" id="np" placeholder="Nombre" onkeydown="if(event.key==='Enter')add('players','np')"><button onclick="add('players','np')">Sumar</button></div><div>${chips(S.players,'players')}</div>
+<h2>¿Qué hay para tomar?</h2><div class="row"><input type="text" id="nd" placeholder="Cerveza, ron, pisco…" onkeydown="if(event.key==='Enter')add('drinks','nd')"><button onclick="add('drinks','nd')">Sumar</button></div><div>${chips(S.drinks,'drinks')}</div>
+<h2>Agua para cada jugador</h2><div class="row"><span class="mut" style="align-self:center">Cada</span><input type="number" min="0" value="${S.water}" onchange="S.water=Math.max(0,+this.value||0);save()" style="width:90px"><span class="mut" style="align-self:center">tragos propios (0 la apaga)</span></div>
+<p class="ctr"><button class="pri" style="width:100%;font-size:1.1rem" onclick="start()">Jugar</button></p>`)}
+function add(k,id){const v=$('#'+id).value.trim();if(v&&!S[k].includes(v)){S[k].push(v);save()}setup();$('#'+id).focus()}
+function start(){if(S.players.length<2){modal('<svg class="st" viewBox="0 0 200 200"><use href="#chop"/></svg><p class="ctr">Agrega al menos 2 jugadores para empezar.</p>');return}go('menu')}
+
+function menu(){cur='menu';
+const t=(v,k,n,s)=>`<button onclick="go('${v}')">${ic(k)}${n}<small>${s}</small></button>`;
+shell('CHOPística',`<div class="hero"><svg class="logo" viewBox="0 -100 640 460" role="img" aria-label="CHOPística"><use href="#logo"/></svg><div class="mut">Los juegos de la noche, en honor a Chop</div></div>
+<div class="menu">${t('ruleta','ruleta','Ruleta doble','quién toma y qué')}${t('piramide','piramide','Pirámide','cartas y tragos')}${t('nunca','nunca','Yo nunca nunca','de suave a picante')}${t('chupi','chupi','Cultura CHOPística','categorías, mezclas y trivia')}</div>
+<div class="row wrap" style="margin-top:18px"><button class="sm" onclick="go('setup')">Jugadores y bebidas</button><button class="sm" onclick="tv();this.classList.toggle('on')">📺 Modo TV</button></div>
+<p class="mut">Para la tele, espeja el celular (Chromecast, AirPlay o cable). El modo TV agranda todo y mantiene la pantalla encendida.</p>`)}
+
+/* ---------- ruleta doble ---------- */
+function ring(cv,items,ang,f0,f1,hl){const c=cv.getContext('2d'),R=cv.width/2,r0=R*f0,r1=R*f1,n=items.length,s=2*Math.PI/n,pal=['#161b25','#252d3b'];
+c.clearRect(0,0,cv.width,cv.width);c.save();c.translate(R,R);
+for(let i=0;i<n;i++){const a=ang+i*s;c.beginPath();c.arc(0,0,r1,a,a+s);c.arc(0,0,r0,a+s,a,true);c.closePath();c.fillStyle=i===hl?'#f2c35b':pal[i%2];c.fill();c.strokeStyle='#b8933f';c.lineWidth=2.5;c.stroke();
+c.save();c.rotate(a+s/2);const rm=(r0+r1)/2;c.translate(rm,0);c.rotate(Math.PI/2);c.fillStyle=i===hl?'#1a1204':'#f7ecd2';c.textAlign='center';c.textBaseline='middle';
+let sz=(r1-r0)*.42;const mw=rm*s*.86;c.font=`bold ${sz}px Trebuchet MS`;while(c.measureText(items[i]).width>mw&&sz>9){sz--;c.font=`bold ${sz}px Trebuchet MS`}c.fillText(items[i],0,0);c.restore()}
+for(const r of [r0,r1]){c.beginPath();c.arc(0,0,r,0,7);c.strokeStyle='#d9ae52';c.lineWidth=5;c.stroke()}c.restore()}
+function spinTo(cv,n,idx,dur,cb){const s=2*Math.PI/n,from=cv._a||0;let t=-Math.PI/2-(idx+.5)*s;t+=2*Math.PI*Math.ceil((from+8*Math.PI-t)/(2*Math.PI));const t0=performance.now();
+(function f(now){const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);cv._a=from+(t-from)*e;cv._d(cv._a,k<1?-1:idx);k<1?requestAnimationFrame(f):cb()})(t0)}
+let busy=false,OUT=[];
+const SPEC=['Toman todos','Fondo','Pasa','Reparte 2'];
+function ruleta(){cur='ruleta';busy=false;
+OUT=[];const m=Math.max(S.drinks.length,SPEC.length);for(let i=0;i<m;i++){if(i<S.drinks.length)OUT.push({t:'d',n:S.drinks[i]});if(i<SPEC.length)OUT.push({t:'s',n:SPEC[i]})}
+shell('Ruleta doble',`<div class="wheels"><div class="p1"></div><div class="p2"></div><canvas id="w1" width="900" height="900"></canvas><canvas id="w2" width="600" height="600"></canvas><div class="coin"><svg viewBox="0 0 100 100"><use href="#i-coin"/></svg></div></div><div class="big" id="res">¡Gira!</div><p class="ctr"><button class="pri" style="width:80%;font-size:1.2rem" onclick="spin()">¡Girar!</button></p>`,1);
+const a=$('#w1'),b=$('#w2');a._a=b._a=0;a._d=(g,h)=>ring(a,OUT.map(x=>x.n),g,.68,.99,h);b._d=(g,h)=>ring(b,S.players,g,.32,.99,h);a._d(0,-1);b._d(0,-1)}
+function spin(){if(busy)return;busy=true;$('#res').textContent='…';
+const ip=Math.random()*S.players.length|0,io=Math.random()*OUT.length|0,o=OUT[io],p=S.players[ip];let left=2;
+const fin=()=>{if(--left)return;busy=false;let h;
+if(o.t==='d'){const n=pick([1,1,2,2,3]);drink(p,n);h=`${esc(p)} toma<br><span style="color:var(--gold)">${esc(o.n)}</span><br><small class="mut">${n} trago${n>1?'s':''}</small>`}
+else if(o.n==='Toman todos'){S.players.forEach(x=>drink(x));h='¡Toman todos!<br><small class="mut">1 trago cada uno</small>'}
+else if(o.n==='Fondo'){drink(p,2);h=`${esc(p)} se toma un<br><span style="color:var(--gold)">fondo</span>`}
+else if(o.n==='Pasa')h=`${esc(p)} pasa<br><small class="mut">esta vez se salva</small>`;
+else h=`${esc(p)} reparte<br><span style="color:var(--gold)">2 tragos</span>`;
+$('#res').innerHTML=h;try{navigator.vibrate(200)}catch(e){}};
+spinTo($('#w2'),S.players.length,ip,4500,fin);spinTo($('#w1'),OUT.length,io,5600,fin)}
+
+/* ---------- pirámide ---------- */
+let P={};
+function newDeck(){const d=[];for(const s of '♠♥♦♣')for(const r of ['A','2','3','4','5','6','7','8','9','10','J','Q','K'])d.push({r,s});return d}
+function piramide(){cur='piramide';pSetup()}
+function pSetup(){shell('Pirámide',`<div class="card"><b>Filas de la pirámide</b><div class="stp" style="margin:8px 0"><button class="sm" onclick="S.rows=Math.max(3,S.rows-1);save();pSetup()">−</button><b>${S.rows}</b><button class="sm" onclick="S.rows=Math.min(10,S.rows+1);save();pSetup()">+</button></div><div class="ctr mut">${S.rows*(S.rows+1)/2} cartas · la de arriba vale ${S.rows} tragos</div></div>
+<div class="card"><b>Cartas de los jugadores</b><div class="row"><button class="${S.mode==='real'?'on':''}" onclick="S.mode='real';save();pSetup()" style="flex:1">Baraja real</button><button class="${S.mode==='app'?'on':''}" onclick="S.mode='app';save();pSetup()" style="flex:1">La app reparte</button></div>
+<b>Variante con mentiras</b><div class="row"><button class="${S.lie?'on':''}" onclick="S.lie=!S.lie;save();pSetup()" style="flex:1">${S.lie?'Activada':'Desactivada'}</button></div></div>
+<p class="ctr"><button class="pri" style="width:80%" onclick="pStart()">Armar pirámide</button></p>`,1)}
+function pStart(){const n=S.rows,tot=n*(n+1)/2,need=tot+(S.mode==='app'?S.players.length*3:0);
+let d=newDeck();if(need>52)d=d.concat(newDeck());if(need>104){modal('<p>Hay demasiados jugadores para repartir. Usa baraja real o menos filas.</p>');return}d=shuf(d);
+P={cards:[],hands:{},last:null,shown:false};if(S.mode==='app')S.players.forEach(p=>P.hands[p]=d.splice(0,3));
+for(let r=0;r<n;r++)for(let c=0;c<=r;c++)P.cards.push({c:d.pop(),up:false,t:n-r});pDraw()}
+function pDraw(){const n=S.rows,cw=Math.max(30,Math.min(64,Math.floor((Math.min(innerWidth,780)-28-88-(n-1)*5)/n)));let k=0,rows='';
+for(let r=0;r<n;r++){let h='';for(let c=0;c<=r;c++){const x=P.cards[k],i=k++;h+=x.up?`<button class="pc up ${'♥♦'.includes(x.c.s)?'red':''}" onclick="flip(${i})">${x.c.r}${x.c.s}</button>`:`<button class="pc" onclick="flip(${i})"></button>`}rows+=`<div class="pr"><i>×${n-r}</i>${h}</div>`}
+let st='<span class="mut">Toca una carta para voltearla. Empieza por la fila de abajo.</span>';
+if(P.last!==null){const x=P.cards[P.last],t=x.t;st=`<b>${x.c.r}${x.c.s}</b> · ${t} trago${t>1?'s':''}`;
+if(S.mode==='app'){const who=S.players.filter(p=>P.hands[p].some(y=>y.r===x.c.r));st+=(!S.lie||P.shown)?`<br>${who.length?'La tienen: <b>'+who.map(esc).join(', ')+'</b>. Reparten '+t+'.':'Nadie la tiene.'}`:`<br><button class="sm" style="margin-top:8px" onclick="P.shown=true;pDraw()">Revelar quién la tiene</button>`}}
+let hd='';if(S.mode==='app')hd=`<h2>Mi mano (mantén presionado)</h2><div class="row wrap">${S.players.map((p,i)=>`<button class="hand sm" onpointerdown="hand(${i})" onpointerup="closeOv()" onpointerleave="closeOv()" onpointercancel="closeOv()" oncontextmenu="return false">${esc(p)}</button>`).join('')}</div>`;
+shell('Pirámide',`<div class="pyw"><div class="pyr" style="--cw:${cw}px">${rows}</div></div><div class="card ctr">${st}</div>${hd}<p class="ctr"><button class="sm" onclick="piramide()">Nueva partida</button></p>`,1)}
+function flip(i){if(P.cards[i].up)return;P.cards[i].up=true;P.last=i;P.shown=false;pDraw()}
+function hand(i){const p=S.players[i];$('#ov').innerHTML=`<div class="ov" style="pointer-events:none"><div class="ctr"><b>${esc(p)}</b><div class="pr" style="margin-top:12px;--cw:84px">${P.hands[p].map(x=>`<span class="pc up ${'♥♦'.includes(x.s)?'red':''}" style="display:flex;align-items:center;justify-content:center">${x.r}${x.s}</span>`).join('')}</div></div></div>`}
+
+/* ---------- nunca nunca ---------- */
+const NN={Suave:['comido pizza fría de desayuno','llegado tarde por quedarme dormido','mentido sobre mi edad','fingido que me gustaba un regalo','llorado con una película animada','cantado en la ducha como en un concierto','perdido el celular en una fiesta','stalkeado a alguien en redes por horas','dicho «ya voy» sin haber salido de la casa','copiado en una prueba','dormido en la micro y pasado mi parada','bailado solo en mi pieza','jugado videojuegos hasta que amaneció','hablado con mi perro como si me entendiera'],
+Carrete:['vomitado en una fiesta','despertado sin saber cómo llegué a casa','bailado arriba de una mesa','hablado mal de alguien que estaba presente','mandado un mensaje tomado y me arrepentí','me han echado de un local','llamado a mi ex tomado','perdido algo valioso carreteando','cantado karaoke sobrio','salido en una historia sin saberlo','dormido en una fiesta ajena','tomado de más en un cumpleaños familiar'],
+Picante:['besado a alguien de este grupo','tenido un crush con alguien de esta mesa','mandado una foto que mi mamá no debería ver','salido con dos personas a la vez','besado a alguien sin saber su nombre','mandado un mensaje coqueto a la persona equivocada','usado una app de citas','soñado con alguien de esta mesa','vuelto con un ex pese a jurar que no','fingido estar dormido para evitar a alguien','tenido una cita que terminó en la primera noche','sido pillado en una situación incómoda'],
+Vergüenza:['tropezado en público y fingido que nada pasó','dicho «te quiero» por error','mandado un audio a la persona equivocada','contado un secreto que me pidieron guardar','me he reído en un funeral','buscado mi propio nombre en Google','dejado en visto a alguien a propósito','saludado a alguien que no me saludaba a mí','llorado por una canción en público','usado la misma ropa varios días seguidos','gritado a un auto creyendo que era conocido','hecho como que no tenía plata para no pagar'],
+Gamer:['rageado tanto que casi rompo el control o el mouse','insultado a mi equipo en una partida','jugado Minecraft o Roblox de niño','perdido una partida por culpa de la mala señal','pedido plata o Robux a mis papás','fingido estar enfermo para seguir jugando','dicho «una más y me voy a dormir» y no cumplir']};
+let N={};
+function nunca(){cur='nunca';N={cats:Object.keys(NN).filter(k=>k!=='Picante'),used:[],q:null};nDraw()}
+function nDraw(){const ch=Object.keys(NN).map(k=>`<button class="sm ${N.cats.includes(k)?'on':''}" onclick="nCat('${k}')">${k}</button>`).join('');
+shell('Yo nunca nunca',`<div class="row wrap">${ch}</div><div class="big">${N.q?'Yo nunca nunca he…<br><span style="color:var(--gold)">'+esc(N.q)+'</span>':'Elige categorías y toca «Siguiente»'}</div><p class="ctr"><button class="pri" style="width:80%" onclick="nNext()">Siguiente</button></p><h2>¿Quién tomó? (toca el nombre)</h2><div class="row wrap">${S.players.map((p,i)=>`<button class="sm" onclick="drink(S.players[${i}]);nDraw()">${esc(p)} · ${S.tally[p]||0}</button>`).join('')}</div>`,1)}
+function nCat(k){const i=N.cats.indexOf(k);i<0?N.cats.push(k):N.cats.splice(i,1);nDraw()}
+function nNext(){const pool=N.cats.flatMap(k=>NN[k]);if(!pool.length){modal('<p>Elige al menos una categoría.</p>');return}let left=pool.filter(q=>!N.used.includes(q));if(!left.length){N.used=[];left=pool}N.q=pick(left);N.used.push(N.q);nDraw()}
+
+const CH={'General':['Marcas de cerveza','Tragos y cócteles','Países de Sudamérica','Equipos de fútbol chileno','Personajes de Disney','Cantantes de reggaetón','Comidas chilenas','Marcas de auto','Series de Netflix','Animales de granja','Cosas que hay en una fiesta','Marcas de ropa deportiva','Frutas','Capitales del mundo','Superhéroes','Modismos chilenos','Lugares de Santiago','Apps del celular','Marcas del supermercado','Cosas de la playa','Pokémon','Películas de terror','Futbolistas','Colores'],
+'Gamer':['Mobs de Minecraft','Materiales de Minecraft','Campeones de League of Legends','Juegos de Roblox','Videojuegos en general','Consolas']};
+const TQ={'Minecraft':[['¿Qué mob explota cuando se acerca al jugador?','El Creeper'],['¿Cómo se llama el jefe dragón del End?','Ender Dragon'],['¿Con qué bloque se construye un portal al Nether?','Obsidiana'],['¿Cuántos corazones de vida tiene el jugador al inicio?','10 corazones'],['¿Qué mob lanza flechas?','El esqueleto'],['¿Qué se usa para dormir y saltarse la noche?','Una cama'],['¿Quién creó Minecraft?','Markus «Notch» Persson'],['¿Qué mineral da las herramientas más fuertes antes de la netherita?','Diamante'],['¿Qué modo permite volar y tener recursos infinitos?','Modo creativo']],
+'Roblox':[['¿Cómo se llama la moneda de Roblox?','Robux'],['¿Con qué programa se crean los juegos de Roblox?','Roblox Studio'],['¿En qué lenguaje se programa en Roblox?','Lua (Luau)'],['¿Qué es un «obby»?','Una carrera de obstáculos'],['¿De qué se trata Adopt Me!?','De adoptar y cuidar mascotas'],['¿Cómo se llaman hoy los juegos dentro de Roblox?','Experiencias'],['¿En qué año se lanzó Roblox?','2006'],['¿Qué anime inspira a Blox Fruits?','One Piece']],
+'League of Legends':[['¿Cuántos jugadores tiene cada equipo en la Grieta del Invocador?','5'],['¿Qué estructura hay que destruir para ganar?','El Nexo'],['¿Qué compañía creó League of Legends?','Riot Games'],['¿Cómo se llama el jefe que da un gran bonus al equipo?','Barón Nashor'],['¿Cuántas líneas tiene el mapa clásico?','3 (superior, central e inferior)'],['¿Qué campeón grita «¡Demacia!»?','Garen'],['¿Cuál es el rango más bajo?','Hierro'],['¿Qué rol se mueve por la jungla?','El jungla'],['¿Cómo se llama el mapa principal?','La Grieta del Invocador']]};
+const TL={'Minecraft':'Trivia Minecraft','Roblox':'Trivia Roblox','League of Legends':'Trivia LoL'};
+const CATS=Object.values(CH).flat(),QIDS=Object.keys(TQ).map(g=>'q:'+g),ALLC=CATS.concat(QIDS);
+let C={};
+function chupi(){cur='chupi';C={sel:ALLC.slice(),mix:false,used:[],uq:[],cat:null,q:null,show:false,turn:0};cNew()}
+function cNew(){const pool=C.sel.length?C.sel:ALLC;let left=pool.filter(x=>!C.used.includes(x));if(!left.length){C.used=[];left=pool}
+let a=pick(left);C.used.push(a);C.q=null;C.show=false;
+if(a.startsWith('q:')){const g=a.slice(2);let l=TQ[g].filter(x=>!C.uq.includes(x[0]));if(!l.length){C.uq=C.uq.filter(u=>!TQ[g].some(x=>x[0]===u));l=TQ[g]}const x=pick(l);C.uq.push(x[0]);C.q={q:x[0],a:x[1]};C.cat=TL[g]}
+else{if(C.mix){const o=pool.filter(x=>x!==a&&!x.startsWith('q:')),b=o.length?pick(o):pick(CATS.filter(x=>x!==a));C.used.push(b);a=a+'  +  '+b}C.cat=a}cDraw()}
+function cDraw(){stop();const p=S.players[C.turn%S.players.length],q=C.q;
+const chip=(id,l)=>`<button class="sm ${C.sel.includes(id)?'on':''}" onclick="cSel(this.dataset.c)" data-c="${esc(id)}">${esc(l)}</button>`;
+const grp=Object.entries(CH).map(([g,l])=>`<div class="mut" style="margin-top:8px">${g}</div><div class="row wrap" style="margin:4px 0">${l.map(x=>chip(x,x)).join('')}</div>`).join('')+`<div class="mut" style="margin-top:8px">Trivia gamer</div><div class="row wrap" style="margin:4px 0">${QIDS.map(id=>chip(id,TL[id.slice(2)])).join('')}</div>`;
+const head=q?`<div class="ctr mut" style="margin-top:14px">${esc(C.cat)}</div><div class="big" style="margin:10px 0">${esc(q.q)}</div>${C.show?`<div class="big" style="margin:8px 0;color:var(--gold)">${esc(q.a)}</div>`:''}`:`<div class="big" style="color:var(--gold)">${esc(C.cat)}</div>`;
+const act=q&&!C.show?'<p class="ctr"><button class="pri" style="width:80%" onclick="C.show=true;cDraw()">Ver respuesta</button></p>':`<div class="row"><button class="pri" style="flex:1" onclick="cOk()">${q?'Acertó ✓':'Lo dijo ✓'}</button><button style="flex:1" onclick="cFail()">Falló · toma</button></div>`;
+shell('Cultura CHOPística',`${head}<div class="card ctr">Le toca a<div class="big" style="margin:8px 0">${esc(p)}</div>${S.timer&&!q?'<div class="bar" id="bar" style="width:100%"></div>':''}</div>${act}
+<div class="row wrap"><button class="sm ${C.mix?'on':''}" onclick="C.mix=!C.mix;cNew()">Mezclada</button><button class="sm ${S.timer?'on':''}" onclick="S.timer=!S.timer;save();cDraw()">Cronómetro 5 s</button><button class="sm" onclick="C.turn++;cNew()">Otra categoría</button></div>
+<h2>Categorías</h2><div class="row wrap"><button class="sm" onclick="C.sel=ALLC.slice();cDraw()">Todas</button><button class="sm" onclick="C.sel=[];cDraw()">Ninguna</button></div>${grp}`,1);
+if(S.timer&&!q){const b=$('#bar');setTimeout(()=>b&&(b.style.width='0%'),60);const iv=setTimeout(()=>{try{navigator.vibrate([300,100,300])}catch(e){}b&&(b.style.background='var(--hot)')},5000);stop=()=>clearTimeout(iv)}}
+function cSel(x){const i=C.sel.indexOf(x);i<0?C.sel.push(x):C.sel.splice(i,1);cDraw()}
+function cOk(){C.turn++;C.q?cNew():cDraw()}
+function cFail(){drink(S.players[C.turn%S.players.length]);C.turn++;cNew()}
+
+go(S.players.length>=2?'menu':'setup');
+</script></body></html>
