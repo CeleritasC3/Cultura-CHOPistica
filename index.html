@@ -47,8 +47,10 @@ h2{font-size:1.02rem;margin:20px 0 4px;color:var(--gold)}
 .ov{position:fixed;inset:0;background:#000a;display:flex;align-items:center;justify-content:center;padding:18px;z-index:20}
 .ov>div{background:var(--bg);border:2px solid var(--gold);border-radius:20px;padding:20px;max-width:520px;width:100%;max-height:85vh;overflow:auto;line-height:1.5;box-shadow:0 0 50px #f2c35b33}
 .bar{height:8px;background:var(--gold);border-radius:4px;transition:width 5s linear}
+.dpw{position:relative;width:100%;aspect-ratio:1400/990}.dpw canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:6px}#ds{touch-action:none;cursor:crosshair}
+.bomb{width:min(58vw,230px);display:block;margin:6px auto;filter:url(#stk);animation:pulse .9s infinite ease-in-out}@keyframes pulse{50%{transform:scale(1.12) rotate(4deg)}}
 .st{height:140px;width:auto;display:block;margin:0 auto 6px;filter:url(#stk)}
-#v2{position:fixed;right:8px;bottom:4px;font-size:.62rem;opacity:.22;pointer-events:none}
+#ver{position:fixed;right:8px;bottom:4px;font-size:.62rem;opacity:.22;pointer-events:none}
 .stp{display:flex;align-items:center;gap:14px;justify-content:center}.stp b{font-size:1.6rem;min-width:36px;text-align:center}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="stk" x="-15%" y="-15%" width="130%" height="130%"><feMorphology in="SourceAlpha" operator="dilate" radius="2.5" result="d"/><feFlood flood-color="#f7ecd2"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -77,13 +79,16 @@ h2{font-size:1.02rem;margin:20px 0 4px;color:var(--gold)}
 <g id="i-nunca" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M28 66L20 92L52 68Z" fill="#f7ecd2"/><rect x="8" y="8" width="84" height="62" rx="18" fill="#f7ecd2"/><path d="M36 34C36 18 64 18 64 34C64 46 50 44 50 56" fill="none" stroke="#e8503a" stroke-width="8"/><circle cx="50" cy="63" r="2" fill="#e8503a" stroke="#e8503a" stroke-width="5"/></g>
 <g id="i-chupi" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M64 58H74A11 11 0 0 1 74 82H64" fill="none" stroke-width="6"/><rect x="22" y="44" width="44" height="46" rx="7" fill="#f2c35b"/><path d="M34 56V80M46 56V80M58 56V80" stroke="#c9962f" stroke-width="3"/><g fill="#f7ecd2"><circle cx="30" cy="44" r="9"/><circle cx="44" cy="40" r="10"/><circle cx="58" cy="44" r="9"/></g><path d="M34 28V40C42 46 56 46 64 40V28Z" fill="#123524"/><path d="M8 24L50 8L92 24L50 40Z" fill="#123524"/><path d="M82 28L86 48" /><circle cx="86" cy="52" r="4" fill="#f2c35b"/></g>
 <g id="i-trivia" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M24 34C12 34 6 62 10 76C13 88 25 88 31 77L37 66H63L69 77C75 88 87 88 90 76C94 62 88 34 76 34Z" fill="#e8503a"/><path d="M26 50V62M20 56H32" stroke="#f7ecd2" stroke-width="6"/><circle cx="72" cy="48" r="5" fill="#f2c35b"/><circle cx="82" cy="58" r="5" fill="#f2c35b"/><path d="M40 52H60" stroke="#f7ecd2" stroke-width="5"/><path d="M50 14V4M38 20L30 12M62 20L70 12" stroke="#f2c35b" stroke-width="5"/></g>
-<g id="i-coin"><circle cx="50" cy="50" r="48" fill="#f2c35b" stroke="#b8933f" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#b8933f" stroke-width="2.5"/><use href="#paw" transform="translate(21 20) scale(.58)"/></g></defs></svg>
-<div id="app"></div><div id="ov"></div><div id="v2">v2</div>
+<g id="i-coin"><circle cx="50" cy="50" r="48" fill="#f2c35b" stroke="#b8933f" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#b8933f" stroke-width="2.5"/><use href="#paw" transform="translate(21 20) scale(.58)"/></g><g id="i-papa" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle cx="46" cy="62" r="32" fill="#3b4558"/><path d="M24 54C27 44 35 38 44 37" fill="none" stroke="#f7ecd2" stroke-width="4"/><rect x="36" y="22" width="20" height="12" rx="3" fill="#94A3B8"/><path d="M52 23C56 12 66 14 70 8" fill="none"/><path d="M78 0L81 8L90 9L83 15L85 24L78 19L70 24L73 15L66 9L75 8Z" fill="#f2c35b" stroke-width="3"/></g>
+<g id="i-probable" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="50" r="11" fill="#f7ecd2"/><path d="M6 92C6 68 42 68 42 92Z" fill="#f7ecd2"/><circle cx="76" cy="50" r="11" fill="#f7ecd2"/><path d="M58 92C58 68 94 68 94 92Z" fill="#f7ecd2"/><circle cx="50" cy="44" r="15" fill="#f2c35b"/><path d="M30 94C30 66 70 66 70 94Z" fill="#f2c35b"/><path d="M36 26L39 10L45 20L50 8L55 20L61 10L64 26Z" fill="#e8503a"/></g>
+<g id="i-vor" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M18 52L10 64L32 54Z" fill="#f7ecd2"/><rect x="6" y="8" width="58" height="46" rx="14" fill="#f7ecd2"/><text x="35" y="42" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="32" fill="#120c06" stroke="none">V</text><path d="M82 84L90 96L68 86Z" fill="#e8503a"/><rect x="36" y="46" width="58" height="46" rx="14" fill="#e8503a"/><text x="65" y="80" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="32" fill="#f7ecd2" stroke="none">R</text></g>
+<g id="i-impostor" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle cx="50" cy="52" r="38" fill="#f7ecd2"/><path d="M14 44Q50 24 86 44L84 60Q68 68 58 58Q50 52 42 58Q32 68 16 60Z" fill="#e8503a"/><ellipse cx="34" cy="50" rx="7" ry="5" fill="#f7ecd2" stroke-width="3"/><ellipse cx="66" cy="50" rx="7" ry="5" fill="#f7ecd2" stroke-width="3"/><path d="M36 78Q50 86 64 78" fill="none"/><path d="M50 4V14" stroke-width="5"/></g></defs></svg>
+<div id="app"></div><div id="ov"></div><div id="ver">v4</div>
 <script>
 const ic=(k,c='ic')=>`<svg class="${c}" viewBox="0 0 100 100"><use href="#i-${k}"/></svg>`;
 const CHW='<svg class="st" viewBox="0 0 200 200"><use href="#chopwater"/></svg>';
 const $=s=>document.querySelector(s);
-let S={players:[],drinks:[],water:6,mode:'real',lie:false,timer:true,rows:5,tally:{}};
+let S={players:[],drinks:[],water:6,mode:'real',lie:false,timer:true,rows:5,sound:true,tally:{}};
 try{Object.assign(S,JSON.parse(localStorage.getItem('chopistica')||'{}'))}catch(e){}
 const save=()=>{try{localStorage.setItem('chopistica',JSON.stringify(S))}catch(e){}};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -99,11 +104,11 @@ nunca:'<b>Yo nunca nunca.</b> Se lee la frase. Quien sí lo hizo, toma un trago.
 chupi:'<b>Cultura chupística.</b> Elige las categorías que quieras. Sale una y, por turnos, cada jugador dice algo que pertenezca a ella sin repetir lo ya dicho. Si se queda en blanco o repite, toma y sale otra. Con «Mezclada», salen dos categorías juntas y vale cualquier cosa de cualquiera de las dos.'};
 
 function shell(t,body,h){const k=STK[cur];$('#app').innerHTML=`<header>${view!=='menu'&&view!=='setup'?'<button class="sm" onclick="go(\'menu\')">‹ Menú</button>':''}<h1>${t}</h1>${k&&view!=='menu'&&view!=='setup'?ic(k,'ic hd'):''}${h?'<button class="sm" onclick="help()">?</button>':''}<button class="sm" onclick="score()">🍺</button></header><main>${body}</main>`}
-function go(v){stop();stop=()=>{};view=v;({setup,menu,ruleta,piramide,nunca,chupi})[v]()}
+function go(v){stop();stop=()=>{};view=v;({setup,menu,ruleta,piramide,nunca,chupi,papa,probable,vor,impostor})[v]()}
 function modal(h){$('#ov').innerHTML=`<div class="ov" onclick="if(event.target===this)closeOv()"><div>${h}<p class="ctr"><button class="pri" onclick="closeOv()">Listo</button></p></div></div>`}
 function closeOv(){$('#ov').innerHTML=''}
 function help(){modal(HELP[cur])}
-function score(){const e=Object.entries(S.tally).sort((a,b)=>b[1]-a[1]);modal('<h2 style="margin-top:0">Marcador de tragos</h2>'+(e.length?e.map(([n,v])=>`<div class="row"><span style="flex:1">${esc(n)}</span><b>${v}</b></div>`).join(''):'<p class="mut">Todavía nadie ha tomado.</p>')+`<button class="sm" onclick="S.tally={};save();score()">Reiniciar marcador</button>`)}
+function score(){const e=Object.entries(S.tally).sort((a,b)=>b[1]-a[1]);modal('<h2 style="margin-top:0">Ranking de tragos</h2>'+(e.length?e.map(([n,v])=>`<div class="row"><span style="flex:1">${esc(n)}</span><b>${v}</b></div>`).join(''):'<p class="mut">Todavía nadie ha tomado.</p>')+``+(e.length?`<div class="row wrap" style="margin-top:12px"><button class="sm" onclick="diploma()">🏆 Diploma</button><button class="sm" onclick="rankOpen()">📲 Compartir ranking</button></div>`:'')+`<button class="sm" onclick="S.tally={};save();score()">Reiniciar marcador</button>`)}
 function drink(p,n=1){const b=S.tally[p]||0;S.tally[p]=b+n;save();if(S.water>0&&Math.floor((b+n)/S.water)>Math.floor(b/S.water)&&!pend.includes(p))pend.push(p);clearTimeout(pt);pt=setTimeout(()=>{if(pend.length){modal(CHW+`<div class="big" style="margin:8px 0">💧 Pausa de agua<br><span style="color:var(--gold)">${pend.map(esc).join(', ')}</span></div><p class="ctr mut">Un vaso de agua antes del próximo trago.</p>`);pend=[]}},900)}
 function tv(){const d=document.documentElement;d.classList.toggle('tv');try{d.classList.contains('tv')?d.requestFullscreen():document.exitFullscreen()}catch(e){}}
 async function wake(){try{await navigator.wakeLock.request('screen')}catch(e){}}
@@ -122,7 +127,7 @@ function start(){if(S.players.length<2){modal('<svg class="st" viewBox="0 0 200 
 function menu(){cur='menu';
 const t=(v,k,n,s)=>`<button onclick="go('${v}')">${ic(k)}${n}<small>${s}</small></button>`;
 shell('CHOPística',`<div class="hero"><svg class="logo" viewBox="0 -100 640 460" role="img" aria-label="CHOPística"><use href="#logo"/></svg><div class="mut">Los juegos de la noche, en honor a Chop</div></div>
-<div class="menu">${t('ruleta','ruleta','Ruleta doble','quién toma y qué')}${t('piramide','piramide','Pirámide','cartas y tragos')}${t('nunca','nunca','Yo nunca nunca','de suave a picante')}${t('chupi','chupi','Cultura CHOPística','categorías, mezclas y trivia')}</div>
+<div class="menu">${t('ruleta','ruleta','Ruleta doble','quién toma y qué')}${t('piramide','piramide','Pirámide','cartas y tragos')}${t('papa','papa','Papa caliente','una bomba y a pasar')}${t('nunca','nunca','Yo nunca nunca','de suave a picante')}${t('probable','probable','Más probable que…','todos señalan a la vez')}${t('vor','vor','Verdad o reto','de suave a picante')}${t('impostor','impostor','El impostor','una palabra, un infiltrado')}${t('chupi','chupi','Cultura CHOPística','categorías, mezclas y trivia')}</div>
 <div class="row wrap" style="margin-top:18px"><button class="sm" onclick="go('setup')">Jugadores y bebidas</button><button class="sm" onclick="tv();this.classList.toggle('on')">📺 Modo TV</button></div>
 <p class="mut">Para la tele, espeja el celular (Chromecast, AirPlay o cable). El modo TV agranda todo y mantiene la pantalla encendida.</p>`)}
 
@@ -212,6 +217,163 @@ if(S.timer&&!q){const b=$('#bar');setTimeout(()=>b&&(b.style.width='0%'),60);con
 function cSel(x){const i=C.sel.indexOf(x);i<0?C.sel.push(x):C.sel.splice(i,1);cDraw()}
 function cOk(){C.turn++;C.q?cNew():cDraw()}
 function cFail(){drink(S.players[C.turn%S.players.length]);C.turn++;cNew()}
+
+/* ---------- ranking, diploma y compartir ---------- */
+const DT=['Por jurar «es el último» y llevar ya como siete últimos.','Por demostrar que el hígado también hace horas extra y no cobra.','Por tomar como si mañana no hubiera resaca. Spoiler: sí la habrá.','Campeón o campeona indiscutido de «una más y nos vamos».','Por ser quien nunca se acordó del agua. Chop está decepcionado.','Por convertir cada brindis en competencia y cada trago en hazaña.','Por decir «ya me voy» a las 2 y seguir en pie a las 5.','Por tomar tanto que hasta la ruleta le tuvo lástima.','Por su valentía: se tomó lo que nadie se atrevía a pedir.','Mañana recordará todo menos cómo llegó a su casa. Por eso este diploma.'];
+const at=n=>String(n).replace(/^@+/,'');
+const rk=()=>S.players.map(p=>[p,S.tally[p]||0]).concat(Object.keys(S.tally).filter(n=>!S.players.includes(n)).map(n=>[n,S.tally[n]])).sort((a,b)=>b[1]-a[1]);
+const fecha=()=>new Date().toLocaleDateString('es-CL',{day:'numeric',month:'long',year:'numeric'});
+const slug=s=>String(s).replace(/[^\w-]+/g,'');
+function bigModal(h){$('#ov').innerHTML=`<div class="ov" onclick="if(event.target===this)closeOv()"><div style="max-width:760px">${h}</div></div>`}
+let LOGO=null;
+function logo(){if(LOGO)return LOGO;return LOGO=new Promise(res=>{const X=new XMLSerializer(),g=id=>X.serializeToString(document.getElementById(id));
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -100 640 460" width="1280" height="920"><defs>${g('rough')}${g('stkL')}${g('chop')}</defs><g filter="url(#stkL)">${g('logo')}</g></svg>`;
+const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)})}
+function paw(x,cx,cy,s,col){x.fillStyle=col;x.save();x.translate(cx,cy);x.scale(s/100,s/100);x.translate(-50,-50);[[50,64,19,15,0],[25,42,7.5,10,-20],[41,30,7.5,10.5,-6],[59,30,7.5,10.5,6],[75,42,7.5,10,20]].forEach(([a,b,rx,ry,r])=>{x.beginPath();x.ellipse(a,b,rx,ry,r*Math.PI/180,0,7);x.fill()});x.restore()}
+function wrap(x,t,w){const o=[];let l='';for(const p of t.split(' ')){const k=l?l+' '+p:p;if(x.measureText(k).width>w&&l){o.push(l);l=p}else l=k}o.push(l);return o}
+function fit(x,t,font,max,size){do{x.font=font.replace('#',size);size-=4}while(x.measureText(t).width>max&&size>24)}
+function blobOf(c,cb){c.toBlob(cb,'image/jpeg',.92)}
+function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.appendChild(a);a.click();a.remove()}
+function shareBlob(b,n,txt){const f=new File([b],n,{type:'image/jpeg'});if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],text:txt}).catch(()=>{});else dl(b,n)}
+
+/* diploma */
+let DP={};
+function diploma(){const e=rk().filter(x=>x[1]>0);if(!e.length){modal('<p>Todavía nadie ha tomado, así que no hay a quién premiar.</p>');return}
+DP={name:e[0][0],ti:Math.random()*DT.length|0};
+bigModal(`<h2 style="margin-top:0">🏆 Diploma de honor</h2><div class="dpw"><canvas id="dc" width="1400" height="990"></canvas><canvas id="ds" width="1400" height="990"></canvas></div><p class="mut" style="margin:6px 0">Firma con el dedo sobre el diploma, en «Firma del homenajeado».</p><div id="dctl"></div>`);
+dpInit();dpUI();dpDraw()}
+function dpUI(){const n=DP.name,e=rk().filter(x=>x[1]>0);$('#dctl').innerHTML=`<div class="row wrap">${e.map(([p,v])=>`<button class="sm ${p===n?'on':''}" onclick="DP.name=this.dataset.p;dpUI();dpDraw()" data-p="${esc(p)}">${esc(at(p))} · ${v}</button>`).join('')}</div>
+<div class="row" style="align-items:center"><button class="sm" onclick="DP.ti=(DP.ti+DT.length-1)%DT.length;dpUI();dpDraw()">‹</button><span class="mut" style="flex:1;text-align:center">Texto ${DP.ti+1} de ${DT.length}</span><button class="sm" onclick="DP.ti=(DP.ti+1)%DT.length;dpUI();dpDraw()">›</button><button class="sm" onclick="DP.ti=Math.random()*DT.length|0;dpUI();dpDraw()">🎲</button></div>
+<div class="row wrap"><button class="sm" onclick="dpClear()">Borrar firma</button><button class="pri" style="flex:1" onclick="dpOut(0)">Descargar JPG</button><button class="sm" onclick="dpOut(1)">Compartir</button><button class="sm" onclick="closeOv()">Cerrar</button></div>`}
+function dpInit(){const s=$('#ds'),c=s.getContext('2d');let d=false,l=null;const pt=e=>{const r=s.getBoundingClientRect();return[(e.clientX-r.left)*s.width/r.width,(e.clientY-r.top)*s.height/r.height]};
+c.lineCap=c.lineJoin='round';c.strokeStyle=c.fillStyle='#14233f';c.lineWidth=6;
+s.onpointerdown=e=>{d=true;l=pt(e);try{s.setPointerCapture(e.pointerId)}catch(_){}c.beginPath();c.arc(l[0],l[1],3,0,7);c.fill();e.preventDefault()};
+s.onpointermove=e=>{if(!d)return;const p=pt(e);c.beginPath();c.moveTo(l[0],l[1]);c.lineTo(p[0],p[1]);c.stroke();l=p};
+s.onpointerup=s.onpointercancel=()=>{d=false}}
+function dpClear(){const s=$('#ds');s.getContext('2d').clearRect(0,0,s.width,s.height)}
+async function dpDraw(){const c=$('#dc'),x=c.getContext('2d'),W=1400,H=990,lg=await logo(),n=at(DP.name),v=S.tally[DP.name]||0;
+x.fillStyle='#f7ecd2';x.fillRect(0,0,W,H);const g=x.createRadialGradient(W/2,H/2,120,W/2,H/2,H*.9);g.addColorStop(0,'rgba(255,255,255,.6)');g.addColorStop(1,'rgba(184,147,63,.2)');x.fillStyle=g;x.fillRect(0,0,W,H);
+x.strokeStyle='#b8933f';x.lineWidth=10;x.strokeRect(30,30,W-60,H-60);x.lineWidth=3;x.strokeRect(54,54,W-108,H-108);
+x.fillStyle='#b8933f';for(const[a,b]of[[54,54],[W-54,54],[54,H-54],[W-54,H-54]]){x.save();x.translate(a,b);x.rotate(Math.PI/4);x.fillRect(-12,-12,24,24);x.restore()}
+if(lg)x.drawImage(lg,W/2-220,66,440,316);
+x.textAlign='center';x.fillStyle='#1b1209';x.font='bold 60px Georgia,serif';try{x.letterSpacing='8px'}catch(e){}x.fillText('DIPLOMA DE HONOR',W/2,446);try{x.letterSpacing='0px'}catch(e){}
+x.fillStyle='#6b5a3a';x.font='italic 30px Georgia,serif';x.fillText('Se otorga con orgullo a',W/2,494);
+x.fillStyle='#a8620a';fit(x,n,'bold #px Georgia,serif',W-320,120);x.fillText(n,W/2,610);const w=x.measureText(n).width;x.strokeStyle='#b8933f';x.lineWidth=3;x.beginPath();x.moveTo(W/2-w/2-20,630);x.lineTo(W/2+w/2+20,630);x.stroke();
+x.fillStyle='#2a2113';x.font='italic 34px Georgia,serif';wrap(x,DT[DP.ti],1000).forEach((t,i)=>x.fillText(t,W/2,690+i*46));
+x.strokeStyle='#2a2113';x.lineWidth=2.5;for(const[a,b]of[[150,470],[930,1250]]){x.beginPath();x.moveTo(a,872);x.lineTo(b,872);x.stroke()}
+x.fillStyle='#6b5a3a';x.font='22px Georgia,serif';x.fillText('Firma de Chop',310,902);x.fillText('Firma del homenajeado',1090,902);
+x.save();x.translate(310,806);x.rotate(-.2);paw(x,0,0,176,'#14233f');x.restore();
+x.beginPath();x.arc(W/2,840,58,0,7);x.fillStyle='#d9a640';x.fill();x.lineWidth=4;x.strokeStyle='#8a5d0c';x.stroke();x.beginPath();x.arc(W/2,840,47,0,7);x.lineWidth=2;x.stroke();
+x.fillStyle='#2a1c04';x.font='bold 40px Georgia,serif';x.fillText(String(v),W/2,846);x.font='bold 15px Georgia,serif';x.fillText(v===1?'TRAGO':'TRAGOS',W/2,868);
+x.fillStyle='#6b5a3a';x.font='22px Georgia,serif';x.fillText(fecha(),W/2,924)}
+function dpOut(sh){const o=document.createElement('canvas');o.width=1400;o.height=990;const x=o.getContext('2d');x.drawImage($('#dc'),0,0);x.drawImage($('#ds'),0,0);const nm='diploma-chopistica-'+slug(DP.name)+'.jpg';blobOf(o,b=>sh?shareBlob(b,nm,'Diploma de honor CHOPística para '+at(DP.name)):dl(b,nm))}
+
+/* ranking para compartir */
+async function rankDraw(c){const x=c.getContext('2d'),W=1080,H=1350,lg=await logo(),r=rk(),mx=Math.max(1,r[0]?r[0][1]:1);
+x.fillStyle='#0D1017';x.fillRect(0,0,W,H);const g=x.createRadialGradient(W/2,0,0,W/2,0,H*.8);g.addColorStop(0,'rgba(245,158,11,.28)');g.addColorStop(1,'rgba(245,158,11,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+if(lg)x.drawImage(lg,W/2-230,24,460,331);
+x.textAlign='center';x.fillStyle='#F8FAFC';x.font='bold 64px Trebuchet MS,Arial,sans-serif';x.fillText('Ranking de la noche',W/2,420);x.fillStyle='#94A3B8';x.font='30px Trebuchet MS,Arial,sans-serif';x.fillText(fecha(),W/2,466);
+const base=960;
+// orden de podio: 2° izquierda, 1° centro, 3° derecha
+for(const[i,cx,h0,col]of[[1,W/2-290,230,'#cbd5e1'],[0,W/2,320,'#F59E0B'],[2,W/2+290,190,'#c9803a']]){const p=r[i];if(!p)continue;
+ x.fillStyle=col;x.beginPath();x.roundRect?x.roundRect(cx-120,base-h0,240,h0,[22,22,0,0]):x.rect(cx-120,base-h0,240,h0);x.fill();
+ x.fillStyle='#0D1017';x.font='bold 96px Trebuchet MS,Arial,sans-serif';x.fillText(p[1],cx,base-h0+110);x.font='bold 26px Trebuchet MS,Arial,sans-serif';x.fillText(p[1]===1?'trago':'tragos',cx,base-h0+148);
+ x.fillStyle='#F8FAFC';fit(x,at(p[0]),'bold #px Trebuchet MS,Arial,sans-serif',250,40);x.fillText(at(p[0]),cx,base-h0-26);
+ x.beginPath();x.arc(cx,base-h0-98,26,0,7);x.fillStyle=col;x.fill();x.fillStyle='#0D1017';x.font='bold 30px Trebuchet MS,Arial,sans-serif';x.fillText(i+1,cx,base-h0-88)}
+x.fillStyle='#F59E0B';x.fillRect(W/2-420,base,840,6);
+const rest=r.slice(3),sh=rest.slice(0,5);sh.forEach((p,i)=>{const y=1000+i*56;x.fillStyle='rgba(255,255,255,.05)';x.beginPath();x.roundRect?x.roundRect(W/2-420,y,840,48,14):x.rect(W/2-420,y,840,48);x.fill();x.textAlign='left';x.fillStyle='#94A3B8';x.font='bold 26px Trebuchet MS,Arial,sans-serif';x.fillText(i+4,W/2-396,y+33);x.fillStyle='#F8FAFC';x.font='28px Trebuchet MS,Arial,sans-serif';x.fillText(at(p[0]),W/2-340,y+33);x.textAlign='right';x.fillStyle='#F59E0B';x.font='bold 28px Trebuchet MS,Arial,sans-serif';x.fillText(p[1],W/2+396,y+33)});
+x.textAlign='center';x.fillStyle='#94A3B8';x.font='24px Trebuchet MS,Arial,sans-serif';if(rest.length>5)x.fillText('y '+(rest.length-5)+' más…',W/2,1298);
+x.fillStyle='#F8FAFC';x.font='26px Trebuchet MS,Arial,sans-serif';x.fillText('Recuerden: el agua también cuenta',W/2,1334)}
+function rankOpen(){bigModal(`<h2 style="margin-top:0">📲 Compartir ranking</h2><canvas id="rc" width="1080" height="1350" style="width:100%;max-width:420px;display:block;margin:0 auto;border-radius:12px"></canvas><div class="row wrap" style="margin-top:12px"><button class="pri" style="flex:1" onclick="rankOut(1)">Compartir imagen</button><button class="sm" onclick="rankWA()">WhatsApp (texto)</button><button class="sm" onclick="rankOut(0)">Descargar JPG</button><button class="sm" onclick="closeOv()">Cerrar</button></div>`);rankDraw($('#rc'))}
+function rankTxt(){const m=['🥇','🥈','🥉'];return '🍻 *CHOPística · Ranking de la noche*\n'+fecha()+'\n\n'+rk().map((p,i)=>`${m[i]||(i+1)+'.'} ${at(p[0])} — ${p[1]} ${p[1]===1?'trago':'tragos'}`).join('\n')+'\n\n💧 Recuerden: el agua también cuenta'}
+function rankWA(){window.open('https://wa.me/?text='+encodeURIComponent(rankTxt()),'_blank')}
+function rankOut(sh){blobOf($('#rc'),b=>sh?shareBlob(b,'ranking-chopistica.jpg',rankTxt()):dl(b,'ranking-chopistica.jpg'))}
+
+/* ---------- juegos nuevos ---------- */
+Object.assign(STK,{papa:'papa',probable:'probable',vor:'vor',impostor:'impostor'});
+Object.assign(HELP,{
+papa:'<b>Papa caliente.</b> Sale una categoría y una bomba con la mecha encendida. Quien tenga el celular dice algo de la categoría y toca «Pasar» para dárselo al siguiente. Cada vez suena más rápido y explota cuando menos lo esperes. A quien le explota en la mano, toma.',
+probable:'<b>Más probable que…</b> Sale una frase. Cuentan 3, 2, 1 y todos señalan a la vez a quien crean que es más probable. Quien reciba más dedos toma: tócale el nombre para anotar el trago.',
+vor:'<b>Verdad o reto.</b> Le toca a un jugador, que elige verdad o reto. Si lo cumple, pasa el turno. Si se niega, toma un trago. Puedes activar o apagar los niveles: Suave, Carrete, Picante y Temáticas.',
+impostor:'<b>El impostor.</b> Todos reciben la misma palabra secreta menos uno: el impostor, que solo sabe el tema. Pasen el celular y cada uno mantiene presionado el botón para ver su rol. Luego, por turnos, dicen una pista sobre la palabra sin nombrarla. Después señalan al sospechoso. Si atrapan al impostor, toma 2 (se salva si adivina la palabra). Si se escapa, el acusado toma 1 y el impostor reparte 2.'});
+let AC=null;function beep(fr=700,d=.05){if(!S.sound)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=fr;g.gain.value=.07;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+const chipsOf=(all,sel,fn)=>all.map(k=>`<button class="sm ${sel.includes(k)?'on':''}" onclick="${fn}(this.dataset.c)" data-c="${esc(k)}">${esc(k)}</button>`).join('');
+const toggle=(a,k)=>{const i=a.indexOf(k);i<0?a.push(k):a.splice(i,1)};
+const nextOf=(pool,used,one=x=>x)=>{let l=pool.filter(x=>!used.includes(one(x)));if(!l.length){used.length=0;l=pool}const r=pick(l);used.push(one(r));return r};
+
+/* ---- papa caliente ---- */
+let B={};
+function papa(){cur='papa';B={used:[],sel:CATS.slice(),st:'idle'};bDraw()}
+function bDraw(){if(B.st!=='run')stop();let b;
+if(B.st==='idle')b=`<div class="card ctr mut">Sale una categoría. Quien tenga el celular dice algo de ella y lo pasa. ¡A quien le explota, toma!</div><p class="ctr"><button class="pri" style="width:80%;font-size:1.2rem" onclick="bStart()">Armar bomba</button></p><div class="row wrap"><button class="sm ${S.sound?'on':''}" onclick="S.sound=!S.sound;save();bDraw()">Sonido</button></div><h2>Categorías</h2><div class="row wrap"><button class="sm" onclick="B.sel=CATS.slice();bDraw()">Todas</button><button class="sm" onclick="B.sel=[];bDraw()">Ninguna</button></div><div class="row wrap">${chipsOf(CATS,B.sel,'bSel')}</div>`;
+else if(B.st==='run')b=`<div class="big" style="color:var(--gold);margin:14px 0 0">${esc(B.cat)}</div><svg id="bomb" class="bomb" viewBox="0 0 100 100"><use href="#i-papa"/></svg><div class="card ctr">Tiene la bomba<div class="big" id="bh" style="margin:6px 0">${esc(S.players[B.h])}</div></div><button class="pri" style="width:100%;font-size:1.3rem;padding:18px" onclick="bPass()">Pasar ➜</button>`;
+else b=`<div class="big" style="font-size:3.4rem;margin-bottom:0">💥</div><div class="big" style="margin-top:6px">${esc(S.players[B.h])} explotó<br><span style="color:var(--gold)">toma 1 trago</span></div><p class="ctr"><button class="pri" style="width:80%" onclick="bStart()">Otra ronda</button></p>`;
+shell('Papa caliente',b,1)}
+function bSel(k){toggle(B.sel,k);bDraw()}
+function bStart(){const pool=B.sel.length?B.sel:CATS;B.cat=nextOf(pool,B.used);B.h=Math.random()*S.players.length|0;B.tot=(12+Math.random()*23)*1000;B.t0=Date.now();B.st='run';bDraw();bTick()}
+function bTick(){const el=Date.now()-B.t0;if(B.st!=='run')return;if(el>=B.tot)return bBoom();const f=1-el/B.tot;beep(600+500*(1-f));const iv=Math.max(110,650*f),t=setTimeout(bTick,iv);stop=()=>clearTimeout(t);const m=$('#bomb');if(m)m.style.animationDuration=Math.max(.2,iv*2/1000)+'s'}
+function bPass(){B.h=(B.h+1)%S.players.length;const e=$('#bh');if(e)e.textContent=S.players[B.h]}
+function bBoom(){stop();B.st='boom';beep(120,.5);try{navigator.vibrate([400,100,400])}catch(e){}drink(S.players[B.h]);bDraw()}
+
+/* ---- más probable que ---- */
+const PM={Suave:['se quede dormido en el transporte público','llegue tarde a su propio cumpleaños','pierda el celular por tercera vez en el mes','se ría en el momento más inapropiado','se ponga a llorar con un comercial','se pierda con el mapa del celular abierto','escriba un mensaje larguísimo y lo borre','se vuelva famoso en internet por accidente','se olvide del cumpleaños de alguien importante','adopte diez mascotas si pudiera'],
+Carrete:['termine bailando arriba de una mesa','sea el último en irse de la fiesta','diga «ya me voy» y se quede tres horas más','se duerma en plena fiesta','pida la canción más vergonzosa','olvide cómo llegó a su casa','cante karaoke sin que se lo pidan','organice un carrete de último minuto','se haga amigo de todos en el local','sea el primero en pedir «una más»'],
+Comida:['se coma la última porción sin preguntar','ponga piña en la pizza y lo defienda','queme hasta el agua hirviendo','pida delivery a las 4 de la mañana','pruebe cualquier comida rara','cocine algo y pida que nadie mire','viva a base de fideos','sepa preparar el mejor asado','se acabe el pan antes del almuerzo','coma algo que se cayó al suelo'],
+Gamer:['rompa un control por rabia','juegue hasta que amanezca un día de semana','diga «una partida más» y se quede cinco horas','grite más fuerte en una partida online','gaste todo en Robux o skins','juegue League of Legends y culpe al equipo','construya una casa gigante en Minecraft','se vuelva profesional en un videojuego','se quede sin batería en medio de la partida','juegue Roblox más de lo que admite'],
+Saber:['gane un programa de preguntas','sepa las capitales de todos los países','discuta por un dato que no es cierto','vea documentales por gusto','sepa más de historia que todos','invente un dato con total seguridad','dé la respuesta correcta por pura suerte','lea la Wikipedia entera por aburrimiento','sepa todos los países de Sudamérica de memoria','se pierda en una trivia de cosas básicas'],
+Picante:['tenga más crushes que días en la semana','haya salido con dos personas a la vez','mande un mensaje coqueto a la persona equivocada','sea el primero en enamorarse','bese a alguien en una fiesta','le vaya mejor en las apps de citas','siga siendo amigo de su ex','dé el peor consejo de amor','sea el más coqueto de la mesa','tenga una cita desastrosa']};
+let Q={};
+function probable(){cur='probable';Q={cats:Object.keys(PM).filter(k=>k!=='Picante'),used:[],q:null,st:'idle',n:''};qDraw()}
+function qDraw(){let b;
+const chips=chipsOf(Object.keys(PM),Q.cats,'qCat');
+if(Q.st==='idle')b=`<div class="big">${Q.q?'¿Quién es más probable que…<br><span style="color:var(--gold)">'+esc(Q.q)+'</span>?':'Elige categorías y toca «Siguiente»'}</div>${Q.q?'<p class="ctr"><button class="pri" style="width:80%" onclick="qCount()">¡Cuenta 3, 2, 1!</button></p>':''}<p class="ctr"><button class="${Q.q?'sm':'pri'}" onclick="qNext()">Siguiente frase</button></p>`;
+else if(Q.st==='count')b=`<div class="big" style="font-size:2rem">¿Quién es más probable que…<br><span style="color:var(--gold)">${esc(Q.q)}</span>?</div><div class="big" style="font-size:7rem;margin:10px 0">${Q.n}</div>`;
+else if(Q.st==='point')b=`<div class="big" style="font-size:2rem">${esc(Q.q)}</div><div class="big" style="color:var(--gold);font-size:3rem">¡Señalen!</div><h2>¿Quién recibió más dedos?</h2><div class="row wrap">${S.players.map((p,i)=>`<button class="sm" onclick="qPick(${i})">${esc(p)}</button>`).join('')}</div>`;
+else b=`<div class="big">${esc(Q.who)} toma<br><small class="mut">1 trago</small></div><p class="ctr"><button class="pri" style="width:80%" onclick="qNext()">Siguiente frase</button></p>`;
+shell('Más probable que…',`<div class="row wrap">${chips}</div>${b}`,1)}
+function qCat(k){stop();toggle(Q.cats,k);Q.st='idle';qDraw()}
+function qNext(){stop();const pool=Q.cats.flatMap(k=>PM[k]);if(!pool.length){modal('<p>Elige al menos una categoría.</p>');return}Q.q=nextOf(pool,Q.used);Q.st='idle';qDraw()}
+function qCount(){Q.st='count';Q.n=3;qDraw();beep(700);let n=3;const iv=setInterval(()=>{n--;if(n<=0){clearInterval(iv);beep(1100,.25);Q.st='point';qDraw()}else{Q.n=n;beep(700);qDraw()}},1000);stop=()=>clearInterval(iv)}
+function qPick(i){Q.who=S.players[i];drink(Q.who);Q.st='done';qDraw()}
+
+/* ---- verdad o reto ---- */
+const VR={Suave:{v:['¿Cuál ha sido tu mayor vergüenza en público?','¿Qué mentira piadosa dices más seguido?','¿Qué canción cantas a escondidas?','¿Cuál es tu peor hábito?','¿Qué comida te gusta y no se lo contarías a nadie?','¿A quién de esta mesa llamarías primero en una emergencia?'],r:['Imita a alguien de la mesa hasta que adivinen quién es','Habla con acento extranjero durante tres turnos','Cuenta hasta 20 en otro idioma','Baila lo mejor que puedas durante 15 segundos','Di el abecedario al revés lo más rápido que puedas','Haz tu mejor cara de actor dramático por 10 segundos']},
+Carrete:{v:['¿Cuál ha sido tu peor resaca y por qué?','¿Qué es lo más raro que has hecho tomado?','¿Cuál fue el peor mensaje que enviaste en una fiesta?','¿Cuál es el trago que más te cuesta tomar?','¿Cuántas veces dijiste «es el último» y no lo fue?'],r:['Improvisa un brindis de 20 segundos','Baila sin música hasta que el siguiente jugador diga stop','Toma tu próximo trago con la mano contraria','Habla como presentador de noticias hasta tu siguiente turno','Canta el coro de una canción que todos conozcan','Sirve un trago a cada persona de la mesa']},
+Picante:{v:['¿A quién de esta mesa le darías un beso por una apuesta?','¿Cuál ha sido tu peor cita?','¿Con quién de la mesa tendrías la peor cita?','¿Qué es lo más atrevido que has mandado por mensaje?','¿Has tenido un crush con alguien de este grupo?'],r:['Dile un piropo exagerado a quien tengas a tu derecha','Cuenta tu mejor anécdota de una cita','Haz tu mejor cara de conquistador durante 10 segundos','Dile algo cariñoso a cada persona de la mesa','Intercambia un accesorio (gorro, reloj, calcetín) con alguien hasta el final de la ronda']},
+Temáticas:{v:['¿Cuál es el videojuego al que más horas le has dedicado?','¿Cuál es la comida que más odias y todos aman?','¿Qué dato de cultura general te da más vergüenza no saber?','¿Qué compraste en un videojuego y te arrepentiste?','¿Cuál es tu plato favorito para cocinar a las apuradas?'],r:['Describe una película de terror usando solo mímica','Di 5 mobs de Minecraft en 10 segundos','Nombra 5 campeones de League of Legends en 10 segundos','Di 5 platos típicos chilenos en 10 segundos','Nombra 5 capitales del mundo en 10 segundos','Imita a un personaje de videojuego sin hablar hasta que adivinen']}};
+let V={};
+function vor(){cur='vor';V={cats:['Suave','Carrete','Temáticas'],used:[],turn:0,t:null,q:null};vDraw()}
+function vDraw(){const p=S.players[V.turn%S.players.length],chips=chipsOf(Object.keys(VR),V.cats,'vCat');let b;
+if(!V.q)b=`<div class="card ctr">Le toca a<div class="big" style="margin:8px 0">${esc(p)}</div></div><div class="row"><button class="pri" style="flex:1;padding:18px" onclick="vGo('v')">Verdad</button><button style="flex:1;padding:18px" onclick="vGo('r')">Reto</button></div><p class="ctr"><button class="sm" onclick="V.turn++;vDraw()">Pasar turno</button></p>`;
+else b=`<div class="ctr mut" style="margin-top:14px">${V.t==='v'?'Verdad':'Reto'} para ${esc(p)}</div><div class="big" style="margin:12px 0;color:var(--gold)">${esc(V.q)}</div><div class="row"><button class="pri" style="flex:1" onclick="V.turn++;V.q=null;vDraw()">Cumplió ✓</button><button style="flex:1" onclick="drink(S.players[V.turn%S.players.length]);V.turn++;V.q=null;vDraw()">Se negó · toma</button></div>`;
+shell('Verdad o reto',`<div class="row wrap">${chips}</div>${b}`,1)}
+function vCat(k){toggle(V.cats,k);vDraw()}
+function vGo(t){const pool=V.cats.flatMap(k=>VR[k][t]);if(!pool.length){modal('<p>Elige al menos un nivel.</p>');return}V.t=t;V.q=nextOf(pool,V.used);vDraw()}
+
+/* ---- el impostor ---- */
+const IM={'Comida':['Completo','Empanada','Sushi','Pizza','Asado','Hamburguesa','Pastel de choclo','Sopaipilla','Helado','Tacos','Cazuela','Lasaña'],
+'Videojuegos':['Creeper','Diamante','Nether','Aldeano','Robux','Obby','Brookhaven','Barón Nashor','Garen','Grieta del Invocador','Control','Consola'],
+'Países y ciudades':['Chile','Argentina','Japón','México','España','Italia','Santiago','París','Nueva York','Río de Janeiro'],
+'Animales':['Perro','Gato','León','Pingüino','Delfín','Jirafa','Elefante','Tortuga','Águila','Pulpo'],
+'Cultura general':['Pirámide','Volcán','Biblioteca','Reloj','Satélite','Dinosaurio','Telescopio','Brújula','Museo','Estatua'],
+'Carrete':['Ruleta','Karaoke','Resaca','Brindis','Fondo blanco','Pisco sour','Cerveza','Hielo','Parlante','Playlist']};
+let I={};
+function impostor(){cur='impostor';I={sel:Object.keys(IM),used:[],st:'setup'};iDraw()}
+function iDraw(){let b;const n=S.players.length;
+if(I.st==='setup')b=`<div class="card ctr mut">Todos reciben la misma palabra secreta, menos uno. Pasen el celular y cada uno mira su rol en privado.</div><h2>Temas</h2><div class="row wrap">${chipsOf(Object.keys(IM),I.sel,'iSel')}</div><p class="ctr"><button class="pri" style="width:80%" onclick="iStart()">Repartir roles</button></p>`;
+else if(I.st==='reveal'){const p=S.players[I.i];b=`<div class="card ctr">Turno de<div class="big" style="margin:8px 0">${esc(p)}</div><div class="mut">Tema: ${esc(I.topic)}</div></div><p class="ctr"><button class="pri hand" style="width:90%;padding:20px" onpointerdown="iPeek()" onpointerup="iHide()" onpointerleave="iHide()" onpointercancel="iHide()" oncontextmenu="return false">Mantén presionado para ver tu rol</button></p>${I.seen?`<p class="ctr"><button onclick="iNext()">${I.i+1<n?'Listo, pasar al siguiente':'Listo, empezar la ronda'}</button></p>`:''}`}
+else if(I.st==='talk')b=`<div class="card ctr"><div class="mut">Tema: ${esc(I.topic)}</div><div class="big" style="margin:10px 0">Empieza<br><span style="color:var(--gold)">${esc(S.players[I.first])}</span></div><div class="mut">Por turnos, cada uno dice una pista sobre la palabra sin nombrarla. Den una o dos vueltas.</div></div><p class="ctr"><button class="pri" style="width:80%" onclick="I.st='vote';iDraw()">Ir a votar</button></p>`;
+else if(I.st==='vote')b=`<div class="big" style="font-size:1.7rem">Cuenta 3, 2, 1 y señalen al sospechoso</div><h2>¿Quién fue el más señalado?</h2><div class="row wrap">${S.players.map((p,i)=>`<button class="sm" onclick="iAccuse(${i})">${esc(p)}</button>`).join('')}</div>`;
+else if(I.st==='caught')b=`<div class="big">¡Atraparon a<br><span style="color:var(--gold)">${esc(S.players[I.imp])}</span>!</div><div class="card ctr">La palabra era <b style="color:var(--gold)">${esc(I.word)}</b>.<br>Si adivina la palabra, se salva.</div><div class="row"><button class="pri" style="flex:1" onclick="iEnd('saved')">Adivinó</button><button style="flex:1" onclick="iEnd('lost')">No adivinó · toma 2</button></div>`;
+else b=`<div class="big" style="font-size:1.6rem">${I.msg}</div><div class="card ctr">El impostor era <b style="color:var(--gold)">${esc(S.players[I.imp])}</b>.<br>La palabra era <b style="color:var(--gold)">${esc(I.word)}</b>.</div><p class="ctr"><button class="pri" style="width:80%" onclick="I.st='setup';iDraw()">Otra ronda</button></p>`;
+shell('El impostor',b,1)}
+function iSel(k){toggle(I.sel,k);iDraw()}
+function iStart(){if(S.players.length<3){modal('<p>Para el impostor necesitan al menos 3 jugadores (lo ideal son 4 o más).</p>');return}const t=I.sel.length?I.sel:Object.keys(IM);I.topic=pick(t);I.word=nextOf(IM[I.topic],I.used);I.imp=Math.random()*S.players.length|0;I.first=Math.random()*S.players.length|0;I.i=0;I.seen=false;I.st='reveal';iDraw()}
+function iPeek(){I.seen=true;const imp=I.i===I.imp;$('#ov').innerHTML=`<div class="ov" style="pointer-events:none"><div class="ctr"><div class="mut">Tu rol</div>${imp?`<div class="big" style="color:var(--hot);margin:10px 0">IMPOSTOR</div><div>No conoces la palabra.<br>El tema es <b>${esc(I.topic)}</b>.</div>`:`<div class="mut" style="margin-top:8px">La palabra es</div><div class="big" style="color:var(--gold);margin:10px 0">${esc(I.word)}</div><div class="mut">Tema: ${esc(I.topic)}</div>`}</div></div>`}
+function iHide(){if($('#ov').innerHTML){closeOv();iDraw()}}
+function iNext(){I.i++;I.seen=false;if(I.i>=S.players.length)I.st='talk';iDraw()}
+function iAccuse(i){if(i===I.imp){I.st='caught'}else{const s=S.players[i],m=S.players[I.imp];drink(s);I.msg=`${esc(s)} no era.<br>${esc(m)} se salva y reparte 2 tragos.<br><small class="mut">${esc(s)} toma 1</small>`;I.st='res'}iDraw()}
+function iEnd(r){const m=S.players[I.imp];if(r==='lost'){drink(m,2);I.msg=`${esc(m)} toma 2 tragos`}else I.msg=`${esc(m)} adivinó la palabra y se salva`;I.st='res';iDraw()}
 
 go(S.players.length>=2?'menu':'setup');
 </script></body></html>
