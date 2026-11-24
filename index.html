@@ -2,6 +2,14 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>CHOPística</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0D1017">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CHOPística">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
 :root{--bg:#0D1017;--p1:#161b25;--p2:#1e2531;--ln:#b8933f;--gold:#f2c35b;--ink:#f7ecd2;--mut:#94A3B8;--hot:#e8735a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -110,7 +118,7 @@ h2{font-size:1.02rem;margin:20px 0 4px;color:var(--gold)}
 <g id="i-probable" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="50" r="11" fill="#f7ecd2"/><path d="M6 92C6 68 42 68 42 92Z" fill="#f7ecd2"/><circle cx="76" cy="50" r="11" fill="#f7ecd2"/><path d="M58 92C58 68 94 68 94 92Z" fill="#f7ecd2"/><circle cx="50" cy="44" r="15" fill="#f2c35b"/><path d="M30 94C30 66 70 66 70 94Z" fill="#f2c35b"/><path d="M36 26L39 10L45 20L50 8L55 20L61 10L64 26Z" fill="#e8503a"/></g>
 <g id="i-vor" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M18 52L10 64L32 54Z" fill="#f7ecd2"/><rect x="6" y="8" width="58" height="46" rx="14" fill="#f7ecd2"/><text x="35" y="42" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="32" fill="#120c06" stroke="none">V</text><path d="M82 84L90 96L68 86Z" fill="#e8503a"/><rect x="36" y="46" width="58" height="46" rx="14" fill="#e8503a"/><text x="65" y="80" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="32" fill="#f7ecd2" stroke="none">R</text></g>
 <g id="i-impostor" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle cx="50" cy="52" r="38" fill="#f7ecd2"/><path d="M14 44Q50 24 86 44L84 60Q68 68 58 58Q50 52 42 58Q32 68 16 60Z" fill="#e8503a"/><ellipse cx="34" cy="50" rx="7" ry="5" fill="#f7ecd2" stroke-width="3"/><ellipse cx="66" cy="50" rx="7" ry="5" fill="#f7ecd2" stroke-width="3"/><path d="M36 78Q50 86 64 78" fill="none"/><path d="M50 4V14" stroke-width="5"/></g><g id="i-ojo" stroke="#120c06" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M50 16V6M28 22L22 12M72 22L78 12" fill="none" stroke-width="5"/><path d="M4 56C22 24 78 24 96 56C78 88 22 88 4 56Z" fill="#f7ecd2"/><circle cx="50" cy="56" r="21" fill="#e8503a"/><circle cx="50" cy="56" r="9" fill="#120c06"/><circle cx="44" cy="50" r="4" fill="#f7ecd2" stroke="none"/></g><g id="chopclown"><g stroke="#1b1209" stroke-width="4"><circle cx="30" cy="98" r="26" fill="#e8503a"/><circle cx="170" cy="98" r="26" fill="#7c5cd6"/><circle cx="40" cy="54" r="28" fill="#f2c35b"/><circle cx="160" cy="54" r="28" fill="#5fe0c8"/><circle cx="72" cy="30" r="28" fill="#f472b6"/><circle cx="128" cy="30" r="28" fill="#e8503a"/><circle cx="100" cy="24" r="26" fill="#60a5fa"/></g><use href="#chop"/><circle cx="100" cy="124" r="15" fill="#e11d2e" stroke="#1b1209" stroke-width="4"/><circle cx="95" cy="119" r="4.5" fill="#fff" opacity=".7"/></g></defs></svg>
-<div id="app"></div><div id="ov"></div><div id="ver">v7</div>
+<div id="app"></div><div id="ov"></div><div id="ver">v8</div>
 <script>
 const ic=(k,c='ic')=>`<svg class="${c}" viewBox="0 0 100 100"><use href="#i-${k}"/></svg>`;
 const CHW='<svg class="st" viewBox="0 0 200 200"><use href="#chopwater"/></svg>';
@@ -155,7 +163,7 @@ function menu(){cur='menu';
 const t=(v,k,n,s)=>`<button onclick="go('${v}')">${ic(k)}${n}<small>${s}</small></button>`;
 shell('CHOPística',`<div class="hero"><svg class="logo" viewBox="0 -100 640 460" role="img" aria-label="CHOPística"><use href="#logo"/><circle id="rn" cx="470" cy="5" r="0" fill="#e11d2e" stroke="#120c06" stroke-width="2" pointer-events="none"/><circle cx="470" cy="5" r="24" fill="transparent" style="cursor:pointer" onclick="nose()"/></svg><div class="mut">Los juegos de la noche, en honor a Chop</div></div>
 <div class="menu">${t('ruleta','ruleta','Ruleta doble','quién toma y qué')}${t('piramide','piramide','Pirámide','cartas y tragos')}${t('papa','papa','Papa caliente','una bomba y a pasar')}${t('nunca','nunca','Yo nunca nunca','de suave a picante')}${t('probable','probable','Más probable que…','todos señalan a la vez')}${t('vor','vor','Verdad o reto','de suave a picante')}${t('impostor','impostor','El impostor','una palabra, un infiltrado')}${t('ojo','ojo','El Ojo','rojo o negro, tragos por zona')}${t('chupi','chupi','Cultura CHOPística','categorías, mezclas y trivia')}</div>
-<div class="row wrap" style="margin-top:18px"><button class="sm" onclick="go('setup')">Jugadores y bebidas</button><button class="sm" onclick="tv();this.classList.toggle('on')">📺 Modo TV</button></div>
+<div class="row wrap" style="margin-top:18px"><button class="sm" onclick="go('setup')">Jugadores y bebidas</button><button class="sm" onclick="tv();this.classList.toggle('on')">📺 Modo TV</button><button class="sm" id="inst" ${DEF?'':'style="display:none"'} onclick="instalar()">📲 Instalar app</button></div>
 <p class="mut">Para la tele, espeja el celular (Chromecast, AirPlay o cable). El modo TV agranda todo y mantiene la pantalla encendida.</p>`)}
 
 /* ---------- ruleta doble ---------- */
@@ -590,5 +598,10 @@ window.mhit=i=>{if(i!==cur||dead)return;clear();cur=-1;sc++;beep(700,.05);upd();
 stop=()=>{dead=true;clearInterval(iv);clearTimeout(to)};
 iv=setInterval(()=>{t--;upd();if(t<=0){stop();clear();aOver('Puntos: '+sc,sc<12?A.p1%S.players.length:-1,'mole',sc)}},1000);show()};
 
+let DEF=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();DEF=e;const b=$('#inst');if(b)b.style.display=''});
+addEventListener('appinstalled',()=>{DEF=null;const b=$('#inst');if(b)b.style.display='none'});
+function instalar(){if(DEF){DEF.prompt();DEF=null;const b=$('#inst');if(b)b.style.display='none'}}
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 go(S.players.length>=2?'menu':'setup');
 </script></body></html>
